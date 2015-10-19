@@ -8,17 +8,59 @@ package com.better.book;
 public class TxtBook extends Book
 {
 
+	public TxtBook()
+	{
+
+	}
+
+	public TxtBook(double process, int currentPage, int pageSize)
+	{
+		this.process = process;
+		this.currentPage = currentPage;
+		this.pageSize = pageSize;
+	}
+
+	public double getProcess()
+	{
+		return process;
+	}
+
+	public void setProcess(double process)
+	{
+		this.process = process;
+	}
+
+	public int getCurrentPage()
+	{
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage)
+	{
+		this.currentPage = currentPage;
+	}
+
+	public int getPageSize()
+	{
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize)
+	{
+		this.pageSize = pageSize;
+	}
+
 	@Override
 	public boolean openBook(String path)
 	{
-		// TODO Auto-generated method stub
+		// TODO 待完善
 		return false;
 	}
 
 	@Override
 	StringBuilder getPageContent(int page)
 	{
-		// TODO Auto-generated method stub
+		// TODO 待完善
 		return null;
 	}
 
