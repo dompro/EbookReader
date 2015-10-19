@@ -88,14 +88,14 @@ abstract class Book
 
 	public abstract boolean openHugeBook(String path);
 
-	abstract StringBuilder getPageContent(int page);
+	abstract String getPageContent(int page);
 
-	StringBuilder getCurrentPageContent()
+	String getCurrentPageContent()
 	{
 		return getPageContent(currentPage);
 	}
 
-	public StringBuilder prePage()
+	public String prePage()
 	{
 		if (currentPage <= 1)
 			return null;
@@ -103,7 +103,7 @@ abstract class Book
 		return getCurrentPageContent();
 	}
 
-	public StringBuilder nextPage()
+	public String nextPage()
 	{
 		if (currentPage >= allPages)
 			return null;

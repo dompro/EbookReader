@@ -1,5 +1,12 @@
 package com.better.book;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+
 /**
  * @author dom<dom_pro@qq.com>
  * @version 创建时间：2015年10月17日 下午8:59:37
@@ -7,6 +14,8 @@ package com.better.book;
  */
 public class TxtBook extends Book
 {
+
+	private InputStreamReader txtInputStreamReader;
 
 	public TxtBook()
 	{
@@ -19,10 +28,26 @@ public class TxtBook extends Book
 	}
 
 	@Override
-	StringBuilder getPageContent(int page)
+	String getPageContent(int page)
 	{
 		// TODO 待完善
-		return null;
+		BufferedReader reader = new BufferedReader(txtInputStreamReader);
+		StringBuffer sb = new StringBuffer("");
+		String line;
+		try
+		{
+			while ((line = reader.readLine()) != null)
+			{
+				sb.append(line);
+				sb.append("\n");
+			}
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		return sb.toString();
+		// return null;
 	}
 
 	@Override
@@ -42,8 +67,24 @@ public class TxtBook extends Book
 	@Override
 	public boolean openNormalBook(String path)
 	{
-		// TODO 自动生成的方法存根
-		return false;
+		// TODO 待完善
+		InputStreamReader inputStreamReader = null;
+		try
+		{
+			inputStreamReader = new InputStreamReader(
+					new FileInputStream(path), "gbk");
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+		catch (UnsupportedEncodingException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 }
