@@ -19,13 +19,6 @@ public class TxtBook extends Book
 	}
 
 	@Override
-	public boolean openBook(String path)
-	{
-		// TODO 待完善
-		return false;
-	}
-
-	@Override
 	StringBuilder getPageContent(int page)
 	{
 		// TODO 待完善
@@ -43,6 +36,13 @@ public class TxtBook extends Book
 	public boolean openHugeBook(String path)
 	{
 		// TODO 待完善
+		return false;
+	}
+
+	@Override
+	public boolean openNormalBook(String path)
+	{
+		// TODO 自动生成的方法存根
 		return false;
 	}
 

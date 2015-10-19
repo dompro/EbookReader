@@ -1,5 +1,7 @@
 package com.better.book;
 
+import com.better.util.FileSizeUtil;
+
 /**
  * @author dom<dom_pro@qq.com>
  * @version 创建时间：2015年10月17日 下午8:59:37
@@ -11,6 +13,11 @@ abstract class Book
 	int allPages = 0;
 	int currentPage = 0;
 	int pageSize = 0;
+
+	int bookSizeType = BOOK_SIZE_NORMAL;
+	static int BOOK_SIZE_NORMAL = 0;
+	static int BOOK_SIZE_BIG = 1;
+	static int BOOK_SIZE_HUGE = 2;
 
 	public Book()
 	{
@@ -54,7 +61,28 @@ abstract class Book
 		this.pageSize = pageSize;
 	}
 
-	public abstract boolean openBook(String path);
+	public boolean openBook(String path)
+	{
+		double bookSize = FileSizeUtil.getFileOrFilesSize(path,
+				FileSizeUtil.SIZETYPE_MB);
+		if (bookSize < 10.0)
+		{
+			bookSizeType = BOOK_SIZE_NORMAL;
+			return openNormalBook(path);
+		}
+		else if (bookSize < 500)
+		{
+			bookSizeType = BOOK_SIZE_BIG;
+			return openBigBook(path);
+		}
+		else
+		{
+			bookSizeType = BOOK_SIZE_HUGE;
+			return openHugeBook(path);
+		}
+	}
+
+	public abstract boolean openNormalBook(String path);
 
 	public abstract boolean openBigBook(String path);
 
