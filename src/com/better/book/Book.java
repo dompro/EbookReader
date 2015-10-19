@@ -1,6 +1,5 @@
 package com.better.book;
 
-
 /**
  * @author dom<dom_pro@qq.com>
  * @version 创建时间：2015年10月17日 下午8:59:37
@@ -12,6 +11,48 @@ abstract class Book
 	int allPages = 0;
 	int currentPage = 0;
 	int pageSize = 0;
+
+	public Book()
+	{
+
+	}
+
+	public Book(double process, int currentPage, int pageSize)
+	{
+		this.process = process;
+		this.currentPage = currentPage;
+		this.pageSize = pageSize;
+	}
+
+	public double getProcess()
+	{
+		return process;
+	}
+
+	public void setProcess(double process)
+	{
+		this.process = process;
+	}
+
+	public int getCurrentPage()
+	{
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage)
+	{
+		this.currentPage = currentPage;
+	}
+
+	public int getPageSize()
+	{
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize)
+	{
+		this.pageSize = pageSize;
+	}
 
 	public abstract boolean openBook(String path);
 

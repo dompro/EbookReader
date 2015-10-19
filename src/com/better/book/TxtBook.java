@@ -10,44 +10,12 @@ public class TxtBook extends Book
 
 	public TxtBook()
 	{
-
+		super();
 	}
 
 	public TxtBook(double process, int currentPage, int pageSize)
 	{
-		this.process = process;
-		this.currentPage = currentPage;
-		this.pageSize = pageSize;
-	}
-
-	public double getProcess()
-	{
-		return process;
-	}
-
-	public void setProcess(double process)
-	{
-		this.process = process;
-	}
-
-	public int getCurrentPage()
-	{
-		return currentPage;
-	}
-
-	public void setCurrentPage(int currentPage)
-	{
-		this.currentPage = currentPage;
-	}
-
-	public int getPageSize()
-	{
-		return pageSize;
-	}
-
-	public void setPageSize(int pageSize)
-	{
-		this.pageSize = pageSize;
+		super(process, currentPage, pageSize);
 	}
 
 	@Override
