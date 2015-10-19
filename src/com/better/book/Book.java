@@ -3,9 +3,38 @@ package com.better.book;
 /**
  * @author dom<dom_pro@qq.com>
  * @version 创建时间：2015年10月17日 下午8:59:37
- *          书籍接口，便于后期扩展
+ *          书籍基类，便于后期扩展
  */
-public interface Book
+abstract class Book
 {
+	double process = 0.0;
+	int allPages = 0;
+	int currentPage = 0;
+	int pageSize = 0;
+
+	public abstract boolean openBook(String path);
+
+	abstract StringBuilder getPageContent(int page);
+
+	StringBuilder getCurrentPageContent()
+	{
+		return getPageContent(currentPage);
+	}
+
+	public StringBuilder prePage()
+	{
+		if (currentPage <= 1)
+			return null;
+		currentPage--;
+		return getCurrentPageContent();
+	}
+
+	public StringBuilder nextPage()
+	{
+		if (currentPage >= allPages)
+			return null;
+		currentPage++;
+		return getCurrentPageContent();
+	}
 
 }
