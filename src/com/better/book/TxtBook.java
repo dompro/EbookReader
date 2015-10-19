@@ -64,4 +64,18 @@ public class TxtBook extends Book
 		return null;
 	}
 
+	@Override
+	public boolean openBigBook(String path)
+	{
+		// TODO 待完善
+		return false;
+	}
+
+	@Override
+	public boolean openHugeBook(String path)
+	{
+		// TODO 待完善
+		return false;
+	}
+
 }

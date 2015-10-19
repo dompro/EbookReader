@@ -1,5 +1,6 @@
 package com.better.book;
 
+
 /**
  * @author dom<dom_pro@qq.com>
  * @version 创建时间：2015年10月17日 下午8:59:37
@@ -13,6 +14,10 @@ abstract class Book
 	int pageSize = 0;
 
 	public abstract boolean openBook(String path);
+
+	public abstract boolean openBigBook(String path);
+
+	public abstract boolean openHugeBook(String path);
 
 	abstract StringBuilder getPageContent(int page);
 
