@@ -2,9 +2,12 @@ package com.better.er;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.better.book.Book;
+import com.better.book.TxtBook;
 import com.better.er.g.GlobalParamter;
 
 /**
@@ -38,11 +41,15 @@ public class ReadActivity extends Activity
 	{
 		// 获取阅读书籍的路径和名称
 		bookPath = getIntent().getStringExtra(GlobalParamter.KEY_BOOK_PATH);
+		bookPath = Environment.getExternalStorageDirectory().getAbsolutePath()
+				+ "/book.txt";
 		bookName = getIntent().getStringExtra(GlobalParamter.KEY_BOOK_NAME);
-		// 显示信息
-		((TextView) findViewById(R.id.textView1)).setText("路径：" + bookPath
-				+ "\n名称：" + bookName);
-		;
-
+		Book book = new TxtBook(0, 1, 0);
+		if (book.openBook(bookPath))
+		{
+			// 显示信息
+			((TextView) findViewById(R.id.textView1)).setText(book
+					.getCurrentPageContent());
+		}
 	}
 }

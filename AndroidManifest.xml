@@ -4,6 +4,8 @@
     android:versionCode="1"
     android:versionName="0.1.0" >
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
@@ -26,6 +28,6 @@
             android:name=".ReadActivity"
             android:label="@string/title_activity_read" >
         </activity>
-    </application>
+    </application>  
 
 </manifest>

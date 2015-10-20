@@ -7,7 +7,7 @@ import com.better.util.FileSizeUtil;
  * @version 创建时间：2015年10月17日 下午8:59:37
  *          书籍基类，便于后期扩展
  */
-abstract class Book
+public abstract class Book
 {
 	double process = 0.0;
 	int allPages = 0;
@@ -90,7 +90,7 @@ abstract class Book
 
 	abstract String getPageContent(int page);
 
-	String getCurrentPageContent()
+	public String getCurrentPageContent()
 	{
 		return getPageContent(currentPage);
 	}
