@@ -3,6 +3,8 @@ package com.better.er;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
 
@@ -21,6 +23,9 @@ public class ReadActivity extends Activity
 	private String bookPath;
 	/* 书籍名称 */
 	private String bookName;
+
+	private Book book;
+	private int currentPage = 2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -44,12 +49,42 @@ public class ReadActivity extends Activity
 		bookPath = Environment.getExternalStorageDirectory().getAbsolutePath()
 				+ "/book.txt";
 		bookName = getIntent().getStringExtra(GlobalParamter.KEY_BOOK_NAME);
-		Book book = new TxtBook(0, 2, 10);
+		book = new TxtBook(0, currentPage, 10);
 		if (book.openBook(bookPath))
 		{
 			// 显示信息
 			((TextView) findViewById(R.id.textView1)).setText(book
 					.getCurrentPageContent());
 		}
+
+		findViewById(R.id.button1).setOnClickListener(new OnClickListener()
+		{
+
+			@Override
+			public void onClick(View v)
+			{
+				if (currentPage > 1)
+				{
+					currentPage--;
+					// 显示信息
+					((TextView) findViewById(R.id.textView1)).setText(book
+							.prePage());
+				}
+			}
+		});
+		findViewById(R.id.button2).setOnClickListener(new OnClickListener()
+		{
+
+			@Override
+			public void onClick(View v)
+			{
+
+				currentPage++;
+				// 显示信息
+				((TextView) findViewById(R.id.textView1)).setText(book
+						.nextPage());
+
+			}
+		});
 	}
 }

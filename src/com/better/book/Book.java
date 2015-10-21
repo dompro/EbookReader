@@ -35,36 +35,6 @@ public abstract class Book
 		this.pageSize = pageSize;
 	}
 
-	public double getProcess()
-	{
-		return process;
-	}
-
-	public void setProcess(double process)
-	{
-		this.process = process;
-	}
-
-	public int getCurrentPage()
-	{
-		return currentPage;
-	}
-
-	public void setCurrentPage(int currentPage)
-	{
-		this.currentPage = currentPage;
-	}
-
-	public int getPageSize()
-	{
-		return pageSize;
-	}
-
-	public void setPageSize(int pageSize)
-	{
-		this.pageSize = pageSize;
-	}
-
 	public boolean openBook(String path)
 	{
 		double bookSize = FileSizeUtil.getFileOrFilesSize(path,
@@ -115,4 +85,33 @@ public abstract class Book
 		return getCurrentPageContent();
 	}
 
+	public double getProcess()
+	{
+		return process;
+	}
+
+	public void setProcess(double process)
+	{
+		this.process = process;
+	}
+
+	public int getCurrentPage()
+	{
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage)
+	{
+		this.currentPage = currentPage;
+	}
+
+	public int getPageSize()
+	{
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize)
+	{
+		this.pageSize = pageSize;
+	}
 }

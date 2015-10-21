@@ -2,7 +2,6 @@ package com.better.book;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
 
 /**
@@ -12,8 +11,6 @@ import java.io.RandomAccessFile;
  */
 public class TxtBook extends Book
 {
-
-	private InputStreamReader txtInputStreamReader;
 	private RandomAccessFile normalAccessFile;
 
 	public TxtBook()
@@ -66,6 +63,7 @@ public class TxtBook extends Book
 		try
 		{
 			normalAccessFile = new RandomAccessFile(path, "r");
+			allPages = 10;
 		}
 		catch (FileNotFoundException e)
 		{
