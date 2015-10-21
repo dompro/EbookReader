@@ -1,11 +1,9 @@
 package com.better.book;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.io.RandomAccessFile;
 
 /**
  * @author dom<dom_pro@qq.com>
@@ -16,6 +14,7 @@ public class TxtBook extends Book
 {
 
 	private InputStreamReader txtInputStreamReader;
+	private RandomAccessFile normalAccessFile;
 
 	public TxtBook()
 	{
@@ -31,23 +30,19 @@ public class TxtBook extends Book
 	String getPageContent(int page)
 	{
 		// TODO 待完善
-		BufferedReader reader = new BufferedReader(txtInputStreamReader);
-		StringBuffer sb = new StringBuffer("");
-		String line;
+		byte[] bytes = new byte[pageSize * 2];
 		try
 		{
-			while ((line = reader.readLine()) != null)
-			{
-				sb.append(line);
-				sb.append("\n");
-			}
+			normalAccessFile.seek((page - 1) * pageSize * 2);
+			normalAccessFile.read(bytes, 0, pageSize * 2);
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
+			return null;
 		}
-		return sb.toString();
-		// return null;
+
+		return new String(bytes);
 	}
 
 	@Override
@@ -64,22 +59,15 @@ public class TxtBook extends Book
 		return false;
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public boolean openNormalBook(String path)
 	{
-		// TODO 待完善
-		InputStreamReader inputStreamReader = null;
 		try
 		{
-			inputStreamReader = new InputStreamReader(
-					new FileInputStream(path), "gbk");
+			normalAccessFile = new RandomAccessFile(path, "r");
 		}
 		catch (FileNotFoundException e)
-		{
-			e.printStackTrace();
-			return false;
-		}
-		catch (UnsupportedEncodingException e)
 		{
 			e.printStackTrace();
 			return false;

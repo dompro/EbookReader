@@ -9,9 +9,13 @@ import com.better.util.FileSizeUtil;
  */
 public abstract class Book
 {
+	/* 书籍阅读进度 */
 	double process = 0.0;
+	/* 书籍总页数 */
 	int allPages = 0;
+	/* 当前阅读页 */
 	int currentPage = 0;
+	/* 每页显示的字符数 */
 	int pageSize = 0;
 
 	int bookSizeType = BOOK_SIZE_NORMAL;

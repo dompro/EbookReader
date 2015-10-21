@@ -44,7 +44,7 @@ public class ReadActivity extends Activity
 		bookPath = Environment.getExternalStorageDirectory().getAbsolutePath()
 				+ "/book.txt";
 		bookName = getIntent().getStringExtra(GlobalParamter.KEY_BOOK_NAME);
-		Book book = new TxtBook(0, 1, 0);
+		Book book = new TxtBook(0, 2, 10);
 		if (book.openBook(bookPath))
 		{
 			// 显示信息
